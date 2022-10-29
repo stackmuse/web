@@ -1,0 +1,8 @@
+{
+  "paths": {
+    "login": "/login",
+    "logout":"/logout",
+    "loginRedirect": "/dashboard",
+    "logoutRedirect": "/login"
+  }
+}

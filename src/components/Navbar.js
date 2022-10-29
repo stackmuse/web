@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { loginPath, logoutPath } from "../lib/Config";
+import config from '../config.json'
 
 function Navbar(props) {
   return (
@@ -9,10 +9,10 @@ function Navbar(props) {
       {props.isAuthenticated ? (
         <>
           <Link to="/dashboard">Dashboard</Link>
-          <Link to={logoutPath}>Logout</Link>
+          <Link to={config.paths.logout}>Logout</Link>
         </>
       ) : (
-        <Link to={loginPath}>Login</Link>
+        <Link to={config.paths.login}>Login</Link>
       )}
     </nav>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import User from "../lib/User";
-import { loginRedirectPath } from "../lib/Config";
+import config from '../config.json'
 
 function Login(props) {
   const user = new User();
@@ -18,7 +18,7 @@ function Login(props) {
     if (location.state?.next) {
       navigate(location.state.next);
     } else {
-      navigate(loginRedirectPath);
+      navigate(config.paths.loginRedirect);
     }
   };
 

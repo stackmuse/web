@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
-import User from "../lib/User";
-import { logoutRedirectPath } from "../lib/Config";
 import { useEffect } from "react";
+import config from '../config.json'
+import User from "../lib/User";
 
 export default function Logout(props) {
   const user = new User();
@@ -10,5 +10,5 @@ export default function Logout(props) {
     props.setIsAuthenticated(user.isAuthenticated());
   });
 
-  return <Navigate to={logoutRedirectPath} replace />;
+  return <Navigate to={config.paths.logoutRedirect} replace />;
 }

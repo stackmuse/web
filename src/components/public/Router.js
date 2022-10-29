@@ -8,10 +8,13 @@ function PublicRouter({ setIsAuthenticated }) {
   return (
     <>
       <Routes>
-        <Route path={'/'} element={<Index />} />
-        <Route path={'/about'} element={<About />} />
-        <Route path={'/login'} element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        <Route path={'/*'} element={<NotFound />} />
+        <Route path={"/"} element={<Index />} />
+        <Route path={"/about"} element={<About />} />
+        <Route
+          path={"/login"}
+          element={<Login setIsAuthenticated={setIsAuthenticated} />}
+        />
+        <Route path={"/*"} element={<NotFound />} />
       </Routes>
     </>
   );

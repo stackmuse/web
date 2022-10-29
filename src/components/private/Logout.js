@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import User from "../../lib/User";
-
 
 export default function Logout({ setIsAuthenticated }) {
   const user = new User();
@@ -13,4 +12,3 @@ export default function Logout({ setIsAuthenticated }) {
     navigate("/");
   });
 }
-

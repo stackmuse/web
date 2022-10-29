@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 function PublicNavbar() {
-  return(
+  return (
     <nav>
       <Link to="/">Index</Link>
       <Link to="/about">About</Link>

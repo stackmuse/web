@@ -1,6 +1,6 @@
 class User {
   storage = localStorage;
-  key = 'user';
+  key = "user";
   data = {};
 
   constructor() {

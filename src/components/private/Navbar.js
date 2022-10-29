@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 function Navbar() {
-  return(
+  return (
     <nav>
       <Link to="/">Dashboard</Link>
       <Link to="/settings">Settings</Link>

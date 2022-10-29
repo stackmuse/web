@@ -16,6 +16,10 @@ class User {
     this.storage.setItem(this.key, JSON.stringify(this.data));
   }
 
+  #delete() {
+    this.storage.removeItem(this.key);
+  }
+
   isAuthenticated() {
     return this.data.username != null;
   }
@@ -27,7 +31,7 @@ class User {
 
   logout() {
     this.data = {};
-    this.#dump();
+    this.#delete();
   }
 }
 

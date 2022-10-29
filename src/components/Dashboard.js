@@ -1,4 +1,4 @@
-import User from "../../lib/User";
+import User from "../lib/User";
 
 function Dashboard() {
   const user = new User();

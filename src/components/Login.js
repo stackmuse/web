@@ -1,19 +1,30 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import User from "../../lib/User";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import User from "../lib/User";
+import { loginRedirectPath } from "../lib/Config";
 
-function Login({ setIsAuthenticated }) {
+function Login(props) {
   const user = new User();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     user.login(username, password);
-    setIsAuthenticated(true);
-    navigate("/");
+    props.setIsAuthenticated(user.isAuthenticated());
+
+    if (location.state?.next) {
+      navigate(location.state.next);
+    } else {
+      navigate(loginRedirectPath);
+    }
   };
+
+  if (user.isAuthenticated()) {
+    return <Navigate to={loginRedirectPath} replace />;
+  }
 
   return (
     <>

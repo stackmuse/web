@@ -1,9 +1,7 @@
 import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Router from "./components/Router";
 import User from "./lib/User";
-import Navbar from "./components/private/Navbar";
-import Router from "./components/private/Router";
-import PublicNavbar from "./components/public/Navbar";
-import PublicRouter from "./components/public/Router";
 
 function App() {
   const user = new User();
@@ -11,21 +9,12 @@ function App() {
     user.isAuthenticated()
   );
 
-  if (isAuthenticated) {
-    return (
-      <>
-        <Navbar />
-        <Router setIsAuthenticated={setIsAuthenticated} />
-      </>
-    );
-  } else {
-    return (
-      <>
-        <PublicNavbar />
-        <PublicRouter setIsAuthenticated={setIsAuthenticated} />
-      </>
-    );
-  }
+  return (
+    <>
+      <Navbar isAuthenticated={isAuthenticated} />
+      <Router setIsAuthenticated={setIsAuthenticated} />
+    </>
+  );
 }
 
 export default App;

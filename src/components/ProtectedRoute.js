@@ -1,5 +1,6 @@
-import User from "../lib/User";
 import { Navigate, useLocation } from "react-router-dom";
+import User from "../lib/User";
+import { loginPath } from "../lib/Config";
 
 function ProtectRoute({ component }) {
   const user = new User();
@@ -8,7 +9,7 @@ function ProtectRoute({ component }) {
   if (user.isAuthenticated()) {
     return component;
   } else {
-    return <Navigate to={"/login"} replace state={{ next: location }} />;
+    return <Navigate to={loginPath} replace state={{ next: location }} />;
   }
 }
 

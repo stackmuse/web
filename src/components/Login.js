@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import User from "../lib/User";
 import config from "../config.json";
 
@@ -10,29 +10,38 @@ function Login(props) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    if (user.isAuthenticated()) {
+      navigate(config.paths.loginRedirect, {
+        state: {
+          flash: { class: "error", message: "You are already logged in." },
+        },
+      });
+    }
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     user.login(username, password);
     props.setIsAuthenticated(user.isAuthenticated());
 
     if (location.state?.next) {
-      navigate(location.state.next);
+      navigate(location.state.next, {
+        state: {
+          flash: { class: "success", message: "You have been logged in." },
+        },
+      });
     } else {
-      navigate(config.paths.loginRedirect);
+      navigate(config.paths.loginRedirect, {
+        state: {
+          flash: { class: "success", message: "You have been logged in." },
+        },
+      });
     }
   };
 
-  if (user.isAuthenticated()) {
-    return <Navigate to={config.paths.loginRedirect} replace />;
-  }
-
   return (
     <>
-      {location.state.flash && (
-        <p className={location.state.flash.category}>
-          {location.state.flash.message}
-        </p>
-      )}
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <input

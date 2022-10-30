@@ -16,7 +16,7 @@ function ProtectRoute({ component }) {
         state={{
           next: location,
           flash: {
-            category: "error",
+            class: "error",
             message: "You must be logged in to view that page.",
           },
         }}

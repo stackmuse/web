@@ -1,5 +1,5 @@
 class User {
-  storage = localStorage;
+  storage = localStorage; // Can use localStorage or sessionStorage as necessary
   key = "user";
   data = {};
 
@@ -21,10 +21,14 @@ class User {
   }
 
   isAuthenticated() {
+    this.#load();
+
+    // TODO: implement authentication validation
     return this.data.username != null;
   }
 
   login(username, password) {
+    // TODO: implement login process and local storage of user data
     this.data.username = username;
     this.#dump();
   }

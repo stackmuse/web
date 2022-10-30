@@ -1,12 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import config from '../config.json'
+import config from "../config.json";
 import Index from "./Index";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import Logout from "./Logout";
 import NotFound from "./NotFound";
 import ProtectedRoute from "./ProtectedRoute";
-
 
 function Router(props) {
   return (

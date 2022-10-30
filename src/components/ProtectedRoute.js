@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import config from '../config.json'
+import config from "../config.json";
 import User from "../lib/User";
 
 function ProtectRoute({ component }) {
@@ -9,7 +9,19 @@ function ProtectRoute({ component }) {
   if (user.isAuthenticated()) {
     return component;
   } else {
-    return <Navigate to={config.paths.login} replace state={{ next: location }} />;
+    return (
+      <Navigate
+        to={config.paths.login}
+        replace
+        state={{
+          next: location,
+          flash: {
+            category: "error",
+            message: "You must be logged in to view that page.",
+          },
+        }}
+      />
+    );
   }
 }
 

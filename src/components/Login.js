@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import User from "../lib/User";
-import config from '../config.json'
+import config from "../config.json";
 
 function Login(props) {
   const user = new User();
@@ -23,11 +23,16 @@ function Login(props) {
   };
 
   if (user.isAuthenticated()) {
-    return <Navigate to={loginRedirectPath} replace />;
+    return <Navigate to={config.paths.loginRedirect} replace />;
   }
 
   return (
     <>
+      {location.state.flash && (
+        <p className={location.state.flash.category}>
+          {location.state.flash.message}
+        </p>
+      )}
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <input
